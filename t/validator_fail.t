@@ -3,6 +3,7 @@ use warnings;
 
 use Test::More;
 use HTML::FormFu;
+use lib 't/lib';
 
 eval "use CGI";
 if ($@) {
@@ -10,7 +11,7 @@ if ($@) {
     exit;
 }
 
-plan tests => 4;
+plan tests => 5;
 
 # Copied from CGI.pm - http://search.cpan.org/perldoc?CGI
 
@@ -52,17 +53,17 @@ my $q;
     $q = CGI->new;
 }
 
-my $form = HTML::FormFu->new->load_config_file('t/post.yml');
+my $form = HTML::FormFu->new->load_config_file('t/validator_fail.yml');
 
 $form->process($q);
 
-ok( $form->submitted_and_valid );
+ok( $form->has_errors('300x300_gif') );
 
 {
-    my $file = $form->param('100x100_gif');
+    my $error = $form->get_error;
     
-    isa_ok( $file, 'Imager' );
-    
-    is( $file->getwidth, 150 );
-    is( $file->getheight, 150 );
+    is( $error->name, '300x300_gif' );
+    is( $error->type, 'Imager::Size' );
+    is( $error->stage, 'validator' );
+    is( $error->message, 'image too big' );
 }

@@ -16,7 +16,7 @@ sub transformer {
     
     return unless defined $value && $value ne "";
 
-    croak "not a file"
+    croak "not an Imager object"
         unless blessed($value) && $value->isa('Imager');
     
     for my $method (@methods) {
@@ -41,7 +41,7 @@ __END__
 
 =head1 NAME
 
-HTML::FormFu::Transformer::Imager::Transform
+HTML::FormFu::Transformer::Imager
 
 =head1 SYNOPSIS
 

@@ -1,0 +1,10 @@
+---
+localize_class: HTMLFormFu::I18N
+elements:
+  - type: file
+    name: 300x300_gif
+    inflators: 
+      - type: Imager
+    validators:
+      - type: Imager::Size
+        width: 100
