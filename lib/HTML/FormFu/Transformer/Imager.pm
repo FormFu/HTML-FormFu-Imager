@@ -1,4 +1,4 @@
-package HTML::FormFu::Transformer::Imager::Transform;
+package HTML::FormFu::Transformer::Imager;
 
 use strict;
 use warnings;

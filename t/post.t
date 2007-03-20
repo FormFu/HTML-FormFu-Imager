@@ -60,7 +60,7 @@ my $form = HTML::FormFu->new({
             inflators => ['Imager'],
             transformers => [
                 {
-                    type  => 'Imager::Transform',
+                    type  => 'Imager',
                     scale => { xpixels => 150 },
                 },
                 ],
