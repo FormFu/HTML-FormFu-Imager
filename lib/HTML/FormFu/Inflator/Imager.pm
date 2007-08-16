@@ -34,11 +34,24 @@ HTML::FormFu::Inflator::Imager - Imager HTML::FormFu inflator
 
 =head1 SYNOPSIS
 
+    ---
+    elements:
+      - type: file
+        name: photo
+        inflators:
+          - type: Imager
+
 =head1 DESCRIPTION
+
+Inflate file uploads into L<Imager> objects.
+
+=head1 SEE ALSO
+
+L<HTML::FormFu::Imager>, L<HTML::FormFu>
 
 =head1 AUTHOR
 
-Carl Franks, C<cfranks@cpan.org>
+Carl Franks
 
 =head1 LICENSE
 

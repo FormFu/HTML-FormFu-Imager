@@ -41,15 +41,41 @@ __END__
 
 =head1 NAME
 
-HTML::FormFu::Transformer::Imager::Pixels
+HTML::FormFu::Validator::Imager::Size
 
 =head1 SYNOPSIS
 
-=head1 DESCRIPTION
+    ---
+    elements:
+      - type: file
+        name: photo
+        inflators:
+          - type: Imager
+        validators:
+          - type: 'Imager::Size'
+            pixels: 200
+
+=head1 METHODS
+
+=head2 pixels
+
+The maximum allowed pixel dimension of either the width or height.
+
+=head2 width
+
+The maximum allowed width in pixels.
+
+=head2 heigth
+
+The maximum allowed height in pixels.
+
+=head1 SEE ALSO
+
+L<HTML::FormFu::Imager>, L<HTML::FormFu>
 
 =head1 AUTHOR
 
-Carl Franks, C<cfranks@cpan.org>
+Carl Franks
 
 =head1 LICENSE
 

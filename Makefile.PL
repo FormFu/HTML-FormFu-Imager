@@ -7,4 +7,6 @@ requires 'perl' => '5.8.1';
 requires 'HTML::FormFu';
 requires 'Imager';
 
+license 'perl';
+
 &WriteAll;
