@@ -5,6 +5,20 @@ use Test::More;
 use HTML::FormFu;
 use lib 't/lib';
 
+eval {
+    require Imager;
+    
+    my $img = Imager->new;
+    
+    $img->read(file => 't/1x1.gif')
+        or die $img->errstr;
+};
+if ($@) {
+    plan skip_all => 
+        "Your Imager intallation may not have GIF support: $@";
+    exit;
+}
+
 eval "use CGI";
 if ($@) {
     plan skip_all => 'CGI required';
