@@ -79,5 +79,5 @@ ok( $form->has_errors('300x300_gif') );
     is( $error->name, '300x300_gif' );
     is( $error->type, 'Imager::Size' );
     is( $error->stage, 'validator' );
-    is( $error->message, 'image too big' );
+    like( $error->message, qr/too large/ );
 }

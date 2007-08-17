@@ -1,7 +1,6 @@
 ---
-localize_class: HTMLFormFu::I18N
 elements:
-  - type: file
+  - type: File
     name: 300x300_gif
     inflators: 
       - type: Imager

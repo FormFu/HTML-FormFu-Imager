@@ -1,6 +1,6 @@
 ---
 elements:
-  - type: file
+  - type: File
     name: 100x100_gif
     inflators: 
       - type: Imager
