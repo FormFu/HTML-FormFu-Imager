@@ -7,7 +7,7 @@ use base 'HTML::FormFu::Validator';
 use Scalar::Util qw/ blessed /;
 use Carp qw/ croak /;
 
-__PACKAGE__->mk_accessors(qw/ width height pixels /);
+__PACKAGE__->mk_accessors(qw/ exact_width exact_height width height pixels /);
 
 sub validate_value {
     my ( $self, $value ) = @_;
@@ -20,13 +20,31 @@ sub validate_value {
     my $width  = $value->getwidth;
     my $height = $value->getheight;
     
+    # exact width
+    
+    if ( my $max = $self->exact_width ) {
+        return if $width != $max;
+    }
+    
+    # exact height
+    
+    if ( my $max = $self->exact_height ) {
+        return if $height != $max;
+    }
+    
+    # max dimension
+    
     if ( my $max = $self->pixels ) {
         return if $width > $max || $height > $max;
     }
     
+    # max width
+    
     if ( my $max = $self->width ) {
         return if $width > $max;
     }
+    
+    # max height
     
     if ( my $max = $self->height ) {
         return if $height > $max;
@@ -65,9 +83,17 @@ The maximum allowed pixel dimension of either the width or height.
 
 The maximum allowed width in pixels.
 
-=head2 heigth
+=head2 height
 
 The maximum allowed height in pixels.
+
+=head2 exact_width
+
+If set, the image width in pixels must exactly match this value.
+
+=head2 exact_height
+
+If set, the image height in pixels must exactly match this value.
 
 =head1 SEE ALSO
 
