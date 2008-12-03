@@ -8,5 +8,4 @@ requires 'Imager';
 
 license 'perl';
 
-auto_install();
 &WriteAll;

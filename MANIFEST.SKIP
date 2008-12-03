@@ -2,6 +2,7 @@
 ^\.project$
 ^\.includepath$
 ^\.settings\b
+^html-formfu-imager\.kpf$
 
 # Avoid version control files.
 \bRCS\b
