@@ -2,7 +2,7 @@ package HTML::FormFu::Imager;
 
 use strict;
 
-our $VERSION = '0.01001';
+our $VERSION = '0.03006';
 $VERSION = eval $VERSION;
 
 1;
