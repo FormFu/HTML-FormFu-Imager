@@ -2,9 +2,6 @@ package HTML::FormFu::Imager;
 
 use strict;
 
-our $VERSION = '0.03006';
-$VERSION = eval $VERSION;
-
 1;
 
 =head1 NAME
