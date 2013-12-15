@@ -1,15 +1,20 @@
 package HTML::FormFu::Transformer::Imager;
+use Moose;
+use MooseX::Attribute::Chained;
 
-use strict;
-use warnings;
-use base 'HTML::FormFu::Transformer';
+extends 'HTML::FormFu::Transformer';
 
 use Scalar::Util qw/ blessed /;
 use Carp qw/ croak /;
 
 my @methods = qw/ scale scaleX scaleY crop flip rotate convert map /;
 
-__PACKAGE__->mk_accessors( @methods );
+for my $name (@methods) {
+    has $name => (
+        is     => 'rw',
+        traits => ['Chained'],
+    );
+}
 
 sub transformer {
     my ( $self, $value ) = @_;
@@ -40,6 +45,8 @@ sub transformer {
     
     return $value;
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 

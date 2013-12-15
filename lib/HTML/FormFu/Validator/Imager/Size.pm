@@ -1,13 +1,17 @@
 package HTML::FormFu::Validator::Imager::Size;
+use Moose;
+use MooseX::Attribute::Chained;
 
-use strict;
-use warnings;
-use base 'HTML::FormFu::Validator';
+extends 'HTML::FormFu::Validator';
 
 use Scalar::Util qw/ blessed /;
 use Carp qw/ croak /;
 
-__PACKAGE__->mk_accessors(qw/ exact_width exact_height width height pixels /);
+has exact_width  => ( is => 'rw', traits => ['Chained'] );
+has exact_height => ( is => 'rw', traits => ['Chained'] );
+has width        => ( is => 'rw', traits => ['Chained'] );
+has height       => ( is => 'rw', traits => ['Chained'] );
+has pixels       => ( is => 'rw', traits => ['Chained'] );
 
 sub validate_value {
     my ( $self, $value ) = @_;
@@ -52,6 +56,8 @@ sub validate_value {
     
     return 1;
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 
