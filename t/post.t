@@ -15,13 +15,13 @@ eval {
 if ($@) {
     plan skip_all => 
         "Your Imager intallation may not have GIF support: $@";
-    exit;
+    die $@;
 }
 
 eval "use CGI";
 if ($@) {
     plan skip_all => 'CGI required';
-    exit;
+    die $@;
 }
 
 plan tests => 4;
@@ -69,9 +69,7 @@ my $q;
 my $form = HTML::FormFu->new->load_config_file('t/post.yml');
 
 $form->process($q);
-#use Data::Dumper;
-#warn Dumper( $form );
-#exit;
+
 ok( $form->submitted_and_valid );
 
 {

@@ -16,13 +16,13 @@ eval {
 if ($@) {
     plan skip_all => 
         "Your Imager intallation may not have GIF support: $@";
-    exit;
+    die $@;
 }
 
 eval "use CGI";
 if ($@) {
     plan skip_all => 'CGI required';
-    exit;
+    die $@;
 }
 
 plan tests => 5;
